@@ -1,0 +1,133 @@
+<!DOCTYPE html> <!-- Se digitar ! no começo, ele abre o código html inteiro-->
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- essa tag é como será visto nos dispositivos-->
+    <title>dev.finances$</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <!-- forma de adicionar link css para não precisar fazer no próprio arquivo html-->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> <!-- copiado do google fonts-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <img src="./assets/logo.svg" alt="Logo Dev Finance">
+    </header> <!-- header, main e footer são tags semânticas, para uma melhor organização-->
+
+    <main class="container">
+
+        <section id="balance">
+            <!-- id é um atributo global-->
+            <!-- assim como os outros, a section também é uma tag semântica-->
+            <h2 class="sr-only">Balanço</h2>
+
+            <div class="card">
+                <!-- a div é uma tag genérica, sem valor, sem significado -->
+                <h3>
+                    <span>Entradas</span>
+                    <img src="./assets/income.svg" alt="income logo">
+
+                </h3>
+                <p id="incomeDisplay"> R$ 0,00</p>
+            </div>
+
+            <div class="card">
+                <h3>
+                    <span>Saídas</span>
+                    <img src="./assets/expense.svg" alt="expense logo">
+                </h3>
+                <p id="expenseDisplay"> R$ 0,00</p>
+            </div>
+
+            <div class="card total">
+                <h3>
+                    <span>Total</span>
+                    <img src="./assets/total.svg" alt="total logo">
+                </h3>
+                <p id="totalDisplay"> R$ 0,00</p>
+            </div>
+        </section>
+
+        <section id="transactions">
+            <h2 class="sr-only">Transações</h2>
+
+            <a href="#" onclick="Modal.open()" 
+            class="button new">+ Nova Transação</a> <!-- digitei a.button.new e apareceu automático. 
+                No JS foi adicionado onclick="Modal.open()" para abrir a aplicação da Nova Transação-->
+            <!-- a # acima foi apenas para preencher, para não sair da página com o clique-->
+            <table id="data-table">
+                <!-- para adicionar tabela-->
+                <thead>
+                    <!-- t (table) head (cabeça)-->
+                    <tr>
+                        <!-- t (table) roll (linha), para adicionar linhas-->
+                        <th>Descrição</th> <!-- th é o conteúdo da head-->
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- adiciona o corpo da tabela-->
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <div class="modal-overlay">
+        <div class="modal">
+            <div id="form">
+                <h2>Nova Transação</h2>
+                <form action="" onsubmit="Form.submit(event)"> <!-- o form é um formulário para captar dados o usuário-->
+                    <!-- onsubmit, esta jogando a informação no javascript-->
+                    <div class="input-group">
+                        <label class="sr-only" for="description">Descrição</label> <!-- sr-only para esconder o nome Descrição na tela-->
+
+                        <input type="text" id="description" name="description" placeholder="Descrição">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label class="sr-only" for="amount">Valor</label>
+
+                        <input type="number" step="0.01" id="amount" name="amount" placeholder="0,00">
+                        <!-- step para ao usuário clicar no lado da caixa, ir aumentando o valor em 0,01 -->
+                    </div>
+                    <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais</small>
+
+                    <div class="input-group">
+                        <label class="sr-only" for="date">Data</label>
+
+                        <input type="date" id="date" name="date">
+                    </div>
+
+                    <div class="input-group actions">
+                        <a onclick="Modal.close()"
+                        href="#" class="button cancel">Cancelar</a>
+                        <button>Salvar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>2021 div.Finance$</p>
+    </footer>
+
+    <script src="./scripts.js">
+        
+    </script>
+
+</body>
+
+</html>
